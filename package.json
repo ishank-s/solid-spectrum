@@ -1,5 +1,5 @@
 {
-  "name": "your-repository-name-monorepo",
+  "name": "solid-spectrum-monorepo",
   "description": "your-repository-desc",
   "version": "0.0.1",
   "license": "MIT",
@@ -38,5 +38,8 @@
   "packageManager": "pnpm@7.22.0",
   "engines": {
     "node": ">=18.0.0"
+  },
+  "volta": {
+    "node": "20.1.0"
   }
 }

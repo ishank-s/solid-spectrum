@@ -1,24 +1,14 @@
 <p>
-  <img width="100%" src="https://assets.solidjs.com/banner?type=your-repository-name&background=tiles&project=Monorepo" alt="your-repository-name Monorepo">
+  <img width="100%" src="https://assets.solidjs.com/banner?type=solid-spectrum&background=tiles&project=Monorepo" alt="solid-spectrum Monorepo">
 </p>
 
-# your-repository-name
+# solid-spectrum
 
 [![pnpm](https://img.shields.io/badge/maintained%20with-pnpm-cc00ff.svg?style=for-the-badge&logo=pnpm)](https://pnpm.io/)
 [![turborepo](https://img.shields.io/badge/built%20with-turborepo-cc00ff.svg?style=for-the-badge&logo=turborepo)](https://turborepo.org/)
 
 your-repository-desc
 
-> **Note** After using this template, you have to search and replace all `your-repository-name` and similar strings
-> with appropriate texts.
->
-> `your-repository-name` should be a **kebab-case** string representing the name of you monorepo.
->
-> `your-repository-desc` should be a **Normal case** string with the description of the repository.
->
-> `your-nickname` should be a **kebab-case** string from your profile URL.
->
-> `your-author-name` should be a **Normal case** string with your first and last name.
 
 ## Project Commands
 

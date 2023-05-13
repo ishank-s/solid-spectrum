@@ -1,26 +1,26 @@
-<a href="https://github.com/your-author-name/your-repository-name/tree/main/packages/hello#readme">
+<a href="https://github.com/your-author-name/solid-spectrum/tree/main/packages/hello#readme">
 <p>
-  <img width="100%" src="https://assets.solidjs.com/banner?type=your-repository-name&background=tiles&project=Hello" alt="your-repository-name Hello">
+  <img width="100%" src="https://assets.solidjs.com/banner?type=solid-spectrum&background=tiles&project=Hello" alt="solid-spectrum Hello">
 </p>
 
 # Hello
 
-Example hello world package in the your-repository-name repository.
+Example hello world package in the solid-spectrum repository.
 
 ## Installation
 
 ```bash
-npm install @your-repository-name/hello
+npm install @solid-spectrum/hello
 # or
-yarn add @your-repository-name/hello
+yarn add @solid-spectrum/hello
 # or
-pnpm add @your-repository-name/hello
+pnpm add @solid-spectrum/hello
 ```
 
 ## How to use it
 
 ```ts
-import { createHello } from '@your-repository-name/hello'
+import { createHello } from '@solid-spectrum/hello'
 
 const [hello, setHello] = createHello()
 

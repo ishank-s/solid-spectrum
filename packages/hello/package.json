@@ -1,18 +1,10 @@
 {
-  "name": "@your-repository-name/hello",
+  "name": "@solid-spectrum/hello",
   "version": "0.0.1",
-  "description": "Example hello world package in the your-repository-name repository.",
+  "description": "Example hello world package in the solid-spectrum repository.",
   "license": "MIT",
   "author": "your-author-name",
   "contributors": [],
-  "homepage": "https://github.com/your-nickname/your-repository-name#readme",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/your-nickname/your-repository-name.git"
-  },
-  "bugs": {
-    "url": "https://github.com/your-nickname/your-repository-name/issues"
-  },
   "keywords": [
     "solid"
   ],

@@ -1,1 +1,1 @@
-# @your-repository-name/hello
+# @solid-spectrum/hello
