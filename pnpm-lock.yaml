@@ -46,15 +46,21 @@ importers:
 
   packages/@solid-stately/toggle:
     dependencies:
-      '@react-stately/utils':
-        specifier: ^3.6.0
-        version: 3.6.0(react@18.2.0)
       '@react-types/checkbox':
         specifier: ^3.4.3
         version: 3.4.3(react@18.2.0)
       '@react-types/shared':
         specifier: ^3.18.0
         version: 3.18.0(react@18.2.0)
+      '@solid-stately/utils':
+        specifier: workspace:^
+        version: link:../utils
+      solid-js:
+        specifier: ^1.6.9
+        version: 1.6.9
+
+  packages/@solid-stately/utils:
+    dependencies:
       solid-js:
         specifier: ^1.6.9
         version: 1.6.9
@@ -1096,15 +1102,6 @@ packages:
       fastq: 1.15.0
     dev: true
 
-  /@react-stately/utils@3.6.0(react@18.2.0):
-    resolution: {integrity: sha512-rptF7iUWDrquaYvBAS4QQhOBQyLBncDeHF03WnHXAxnuPJXNcr9cXJtjJPGCs036ZB8Q2hc9BGG5wNyMkF5v+Q==}
-    peerDependencies:
-      react: ^16.8.0 || ^17.0.0-rc.1 || ^18.0.0
-    dependencies:
-      '@swc/helpers': 0.4.14
-      react: 18.2.0
-    dev: false
-
   /@react-types/checkbox@3.4.3(react@18.2.0):
     resolution: {integrity: sha512-kn2f8mK88yvRrCfh8jYCDL2xpPhSApFWk9+qjWGsX/bnGGob7D5n71YYQ4cS58117YK2nrLc/AyQJXcZnJiA7Q==}
     peerDependencies:
@@ -1120,12 +1117,6 @@ packages:
       react: ^16.8.0 || ^17.0.0-rc.1 || ^18.0.0
     dependencies:
       react: 18.2.0
-    dev: false
-
-  /@swc/helpers@0.4.14:
-    resolution: {integrity: sha512-4C7nX/dvpzB7za4Ql9K81xK3HPxCpHMgwTZVyf+9JQ6VUbn9jjZVN7/Nkdz/Ugzs2CSjqnL/UPXroiVBVHUWUw==}
-    dependencies:
-      tslib: 2.4.1
     dev: false
 
   /@tootallnate/once@2.0.0:
@@ -3708,6 +3699,7 @@ packages:
 
   /tslib@2.4.1:
     resolution: {integrity: sha512-tGyy4dAjRIEwI7BzsB0lynWgOpfqjUdq91XXAlIWD2OwKBH7oCl/GZG/HT4BOHrTlPMOASlMQ7veyTqpmRcrNA==}
+    dev: true
 
   /tsup-preset-solid@0.1.3(esbuild@0.17.3)(solid-js@1.6.9)(tsup@6.5.0):
     resolution: {integrity: sha512-J+3FWntWFOL+qt7C8goIW3EYW/6tGiX8pSf91djBpXqLoBV8gDIAGd4nU6fC3nqjDaN1osmMIJHqhNupbRNUgQ==}

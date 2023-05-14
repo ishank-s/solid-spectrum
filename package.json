@@ -7,7 +7,6 @@
   "contributors": [],
   "private": true,
   "scripts": {
-    "postinstall": "pnpm build",
     "dev": "pnpm run --parallel --filter ./packages/* dev",
     "build": "turbo run build --filter=./packages/*",
     "test": "turbo run test --filter=./packages/*",

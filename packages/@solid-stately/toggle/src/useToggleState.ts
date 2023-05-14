@@ -11,11 +11,12 @@
  */
 
 import {ToggleProps} from '@react-types/checkbox';
-import {useControlledState} from '@react-stately/utils';
+import {useControlledState} from '@solid-stately/utils';
+import { Accessor } from 'solid-js'
 
 export interface ToggleState {
   /** Whether the toggle is selected. */
-  readonly isSelected: boolean,
+  readonly isSelected: Accessor<boolean>,
 
   /** Updates selection state. */
   setSelected(isSelected: boolean): void,
@@ -32,7 +33,7 @@ export function useToggleState(props: ToggleProps = {}): ToggleState {
 
   // have to provide an empty function so useControlledState doesn't throw a fit
   // can't use useControlledState's prop calling because we need the event object from the change
-  let [isSelected, setSelected] = useControlledState(!!props.isSelected, props.defaultSelected || false, props.onChange as any);
+  let [isSelected, setSelected] = useControlledState(!!props.isSelected, props.defaultSelected || false, props.onChange);
 
   function updateSelected(value:unknown) {
     if (!isReadOnly) {
@@ -42,7 +43,7 @@ export function useToggleState(props: ToggleProps = {}): ToggleState {
 
   function toggleState() {
     if (!isReadOnly) {
-      setSelected(!isSelected);
+      setSelected(!isSelected());
     }
   }
 
