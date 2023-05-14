@@ -15,6 +15,7 @@
   },
   "dependencies": {
     "@solid-spectrum/hello": "^0.0.1",
+    "@solid-spectrum/solid-stately": "workspace:^",
     "solid-js": "^1.6.9"
   }
 }
