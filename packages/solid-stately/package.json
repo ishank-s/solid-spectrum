@@ -1,0 +1,60 @@
+{
+  "name": "@solid-spectrum/solid-stately",
+  "version": "0.0.1",
+  "description": "Example hello world package in the solid-spectrum repository.",
+  "license": "MIT",
+  "author": "your-author-name",
+  "contributors": [],
+  "keywords": [
+    "solid"
+  ],
+  "private": true,
+  "sideEffects": false,
+  "publishConfig": {
+    "access": "public"
+  },
+  "files": [
+    "dist"
+  ],
+  "type": "module",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    "solid": {
+      "development": "./dist/dev.js",
+      "import": "./dist/index.js"
+    },
+    "development": {
+      "import": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/dev.js"
+      },
+      "require": "./dist/dev.cjs"
+    },
+    "import": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    },
+    "require": "./dist/index.cjs"
+  },
+  "browser": {},
+  "typesVersions": {},
+  "scripts": {
+    "dev": "tsup --watch",
+    "build": "tsup",
+    "test": "concurrently pnpm:test:*",
+    "test:client": "vitest -c ../../configs/vitest.config.ts",
+    "test:ssr": "pnpm run test:client --mode ssr",
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "solid-js": "^1.6.9"
+  },
+  "dependencies": {
+    "@solid-stately/toggle": "0.0.1"
+  },
+  "peerDependencies": {
+    "solid-js": "^1.6.0"
+  }
+}
