@@ -49,7 +49,7 @@
     "typecheck": "tsc --noEmit"
   },
   "devDependencies": {
-    "solid-js": "^1.6.9"
+    "solid-js": "^1.7.5"
   },
   "dependencies": {
     "@solid-stately/toggle": "0.0.1"

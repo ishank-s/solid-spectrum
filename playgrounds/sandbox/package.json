@@ -10,12 +10,14 @@
     "serve": "vite preview"
   },
   "devDependencies": {
+    "solid-devtools": "^0.26.0",
     "vite": "^4.0.4",
     "vite-plugin-solid": "^2.5.0"
   },
   "dependencies": {
-    "@solid-spectrum/hello": "^0.0.1",
-    "@solid-spectrum/solid-stately": "workspace:^",
-    "solid-js": "^1.6.9"
+    "@solid-devtools/logger": "^0.6.1",
+    "@solid-devtools/overlay": "^0.6.0",
+    "@solid-spectrum/solid-aria": "workspace:^",
+    "solid-js": "^1.7.5"
   }
 }

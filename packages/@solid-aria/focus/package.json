@@ -1,0 +1,38 @@
+{
+  "name": "@solid-aria/focus",
+  "version": "0.0.1",
+  "description": "Toggle Spectrum UI components in Solid",
+  "license": "Apache-2.0",
+  "main": "./dist/index.mjs",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    "types": "./dist/index.d.ts",
+    "import": "./dist/import.mjs",
+    "require": "./dist/index.js"
+  },
+  "scripts": {
+    "dev": "tsup --watch",
+    "build": "tsup",
+    "test": "concurrently pnpm:test:*",
+    "test:client": "vitest -c ../../configs/vitest.config.ts",
+    "test:ssr": "pnpm run test:client --mode ssr",
+    "typecheck": "tsc --noEmit"
+  },
+  "files": [
+    "dist",
+    "src"
+  ],
+  "sideEffects": false,
+  "dependencies": {
+    "@solid-aria/utils": "workspace:^",
+    "@solid-aria/interactions": "workspace:^",
+    "clsx": "^1.1.1"
+  },
+  "peerDependencies": {
+    "solid-js": "^1.7.5"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
