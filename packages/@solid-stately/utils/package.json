@@ -25,7 +25,10 @@
   ],
   "sideEffects": false,
   "peerDependencies": {
-    "solid-js": "^1.6.9"
+    "solid-js": "^1.7.5"
+  },
+  "devDependencies": {
+    "tsup": "^6.5.0"
   },
   "publishConfig": {
     "access": "public"

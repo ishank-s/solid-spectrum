@@ -1,15 +1,45 @@
-import type { Component } from 'solid-js'
-import { Hello } from '@solid-spectrum/hello'
-import {useToggleState} from "@solid-spectrum/solid-stately"
-import logo from './logo.svg'
-import styles from './App.module.css'
+import { createSignal, type Component, createEffect } from 'solid-js'
+import { useToggle } from '@solid-spectrum/solid-aria'
+import { debugSignal } from '@solid-devtools/logger'
 
+const ToggleButton:Component<{initial:boolean}> = (props)=>{
+  const [isSelected, setSelected] = createSignal<boolean>(props.initial)
+  let inputRef
+  const state = useToggle(
+    {},
+    { isSelected, setSelected, toggle: () => setSelected(v => !v) },
+    inputRef as any,
+  )
+  createEffect(() => {
+    console.log('Prop value changed:', props.initial);
+    setSelected(props.initial)
+  });
+  return <button
+  style={{
+    backgroundColor: state.isPressed()
+      ? state.isSelected()
+        ? 'darkgreen'
+        : 'gray'
+      : state.isSelected()
+      ? 'green'
+      : 'lightgray',
+    color: state.isSelected() ? 'white' : 'black',
+    padding: '10',
+    border: 'none',
+  } as any}
+  ref={inputRef}
+  onClick={()=>setSelected((v)=>!v)}
+>
+  Pin
+</button>
+}
 const App: Component = () => {
-  const {isSelected,setSelected,toggle} = useToggleState({isSelected:true})
+     const [val,setVal] = createSignal(false);
+  debugSignal(val)
   return (
     <div>
-      <input type="checkbox" checked={isSelected()}/>
-      <button onClick={toggle}>Click</button>
+      <ToggleButton initial={val()}/>
+      <button onClick={()=>setVal(v=>!v)}>test b</button>
     </div>
   )
 }
