@@ -12,7 +12,7 @@
 
 import clsx from 'clsx';
 import {mergeProps,onlyChild} from '@solid-aria/utils';
-import {useFocusRing} from './useFocusRing';
+import {useFocusRing} from './createFocusRing';
 import {JSX} from 'solid-js'
 
 export interface FocusRingProps {

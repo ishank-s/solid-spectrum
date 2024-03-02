@@ -24,16 +24,17 @@
     "src"
   ],
   "dependencies": {
-    "@react-types/shared": "^3.18.0",
+    "@react-types/shared": "^3.22.1",
     "@solid-stately/utils": "workspace:^",
-    "clsx": "^1.1.1"
+    "clsx": "^1.2.1",
+    "solid-js": "^1.8.15"
   },
   "sideEffects": false,
   "peerDependencies": {
     "solid-js": "^1.7.5"
   },
   "devDependencies": {
-    "tsup": "^6.5.0"
+    "tsup": "^6.7.0"
   },
   "publishConfig": {
     "access": "public"

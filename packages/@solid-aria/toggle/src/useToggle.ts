@@ -39,7 +39,7 @@ export interface ToggleAria {
 export function useToggle(
   props: AriaToggleProps,
   state: ToggleState,
-  ref: HTMLInputElement,
+  ref: HTMLInputElement|HTMLButtonElement,
 ): ToggleAria {
   let {
     isDisabled = false,

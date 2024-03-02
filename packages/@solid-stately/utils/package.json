@@ -28,9 +28,12 @@
     "solid-js": "^1.7.5"
   },
   "devDependencies": {
-    "tsup": "^6.5.0"
+    "tsup": "^6.7.0"
   },
   "publishConfig": {
     "access": "public"
+  },
+  "dependencies": {
+    "solid-js": "^1.8.15"
   }
 }

@@ -57,3 +57,8 @@ pnpm run update-deps
 # Updates all dependencies in the repository
 # pnpm up -Lri
 ```
+
+
+###
+Upgrade devtools
+https://www.npmjs.com/package/@solid-primitives/jsx-parser

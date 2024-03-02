@@ -25,12 +25,16 @@
   ],
   "sideEffects": false,
   "dependencies": {
-    "@solid-aria/utils": "workspace:^",
     "@solid-aria/interactions": "workspace:^",
-    "clsx": "^1.1.1"
+    "@solid-aria/utils": "workspace:^",
+    "clsx": "^1.2.1",
+    "solid-js": "^1.8.15"
   },
   "peerDependencies": {
     "solid-js": "^1.7.5"
+  },
+  "devDependencies": {
+    "@react-types/shared": "3.18.0"
   },
   "publishConfig": {
     "access": "public"

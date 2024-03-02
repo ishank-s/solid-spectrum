@@ -5,15 +5,15 @@ import solidPlugin from 'vite-plugin-solid'
 export default defineConfig({
   plugins: [
     solidPlugin(),
-    devtools({
-      /* additional options */
-      autoname: true, // e.g. enable autoname
-      locator: {
-        targetIDE: 'vscode',
-        componentLocation: true,
-        jsxLocation: true,
-      },
-    }),
+    // devtools({
+    //   /* additional options */
+    //   autoname: true, // e.g. enable autoname
+    //   locator: {
+    //     targetIDE: 'vscode',
+    //     componentLocation: true,
+    //     jsxLocation: true,
+    //   },
+    // }),
   ],
   build: {
     target: 'esnext',

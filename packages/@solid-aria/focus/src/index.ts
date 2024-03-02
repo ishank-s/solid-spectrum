@@ -10,14 +10,16 @@
  * governing permissions and limitations under the License.
  */
 
-export {FocusScope, useFocusManager, getFocusableTreeWalker, createFocusManager, isElementInChildOfActiveScope} from './FocusScope';
-export {FocusRing} from './FocusRing';
-export {FocusableProvider, useFocusable} from './useFocusable';
-export {useFocusRing} from './useFocusRing';
-export {focusSafely} from './focusSafely';
-export {useHasTabbableChild} from './useHasTabbableChild';
+export {
+  FocusScope,
+  useFocusManager,
+  getFocusableTreeWalker,
+  createFocusManager,
+} from './FocusScope'
+export type { FocusManager } from './FocusScope'
+export { FocusRing } from './FocusRing'
+export { focusSafely } from './focusSafely'
+export { useHasTabbableChild } from './useHasTabbableChild'
 
-export type {FocusScopeProps, FocusManager, FocusManagerOptions} from './FocusScope';
-export type {FocusRingProps} from './FocusRing';
-export type {FocusableAria, FocusableOptions, FocusableProviderProps} from './useFocusable';
-export type {AriaFocusRingProps, FocusRingAria} from './useFocusRing';
+export type { FocusRingProps } from './FocusRing'
+export type { CreateFocusRingProps, FocusRingResult, createFocusRing } from './createFocusRing'

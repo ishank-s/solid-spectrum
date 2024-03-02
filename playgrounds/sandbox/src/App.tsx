@@ -4,11 +4,11 @@ import { debugSignal } from '@solid-devtools/logger'
 
 const ToggleButton:Component<{initial:boolean}> = (props)=>{
   const [isSelected, setSelected] = createSignal<boolean>(props.initial)
-  let inputRef
+  let inputRef:HTMLButtonElement
   const state = useToggle(
     {},
     { isSelected, setSelected, toggle: () => setSelected(v => !v) },
-    inputRef as any,
+    inputRef!
   )
   createEffect(() => {
     console.log('Prop value changed:', props.initial);
@@ -27,7 +27,7 @@ const ToggleButton:Component<{initial:boolean}> = (props)=>{
     padding: '10',
     border: 'none',
   } as any}
-  ref={inputRef}
+  ref={inputRef!}
   onClick={()=>setSelected((v)=>!v)}
 >
   Pin

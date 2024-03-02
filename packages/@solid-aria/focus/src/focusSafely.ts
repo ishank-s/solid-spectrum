@@ -11,8 +11,8 @@
  */
 
 import {FocusableElement} from '@react-types/shared';
-import {focusWithoutScrolling, runAfterTransition} from '@react-aria/utils';
-import {getInteractionModality} from '@react-aria/interactions';
+import {focusWithoutScrolling, runAfterTransition} from '@solid-aria/utils';
+import {getInteractionModality} from '@solid-aria/interactions';
 
 /**
  * A utility function that focuses an element while avoiding undesired side effects such

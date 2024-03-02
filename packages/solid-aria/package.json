@@ -49,10 +49,10 @@
     "typecheck": "tsc --noEmit"
   },
   "devDependencies": {
-    "solid-js": "^1.7.5"
+    "solid-js": "^1.8.15"
   },
   "dependencies": {
-    "@solid-aria/toggle": "0.0.1"
+    "@solid-aria/toggle": "workspace:*"
   },
   "peerDependencies": {
     "solid-js": "^1.6.0"

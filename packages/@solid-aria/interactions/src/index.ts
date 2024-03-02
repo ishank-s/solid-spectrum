@@ -12,16 +12,7 @@
 
 export {Pressable} from './Pressable';
 export {PressResponder} from './PressResponder';
-export {useFocus} from './useFocus';
-export {
-  isFocusVisible,
-  getInteractionModality,
-  setInteractionModality,
-  useInteractionModality,
-  useFocusVisible,
-  useFocusVisibleListener
-} from './useFocusVisible';
-export {useFocusWithin} from './useFocusWithin';
+
 export {useHover} from './useHover';
 // export {useInteractOutside} from './useInteractOutside';
 // export {useKeyboard} from './useKeyboard';
@@ -30,9 +21,6 @@ export {usePress} from './usePress';
 // export {useScrollWheel} from './useScrollWheel';
 // export {useLongPress} from './useLongPress';
 
-export type {FocusProps, FocusResult} from './useFocus';
-export type {FocusVisibleHandler, FocusVisibleProps, FocusVisibleResult, Modality} from './useFocusVisible';
-export type {FocusWithinProps, FocusWithinResult} from './useFocusWithin';
 export type {HoverProps, HoverResult} from './useHover';
 // export type {InteractOutsideProps} from './useInteractOutside';
 // export type {KeyboardProps, KeyboardResult} from './useKeyboard';
@@ -41,3 +29,12 @@ export type {MoveEvents} from '@react-types/shared';
 // export type {MoveResult} from './useMove';
 // export type {LongPressProps, LongPressResult} from './useLongPress';
 // export type {ScrollWheelProps} from './useScrollWheel';
+export * from "./createFocus";
+export * from "./createFocusVisible";
+export * from "./createFocusWithin";
+export * from "./createHover";
+export * from "./createInteractOutside";
+export * from "./createKeyboard";
+export * from "./createLongPress";
+export * from "./createPress";
+export * from "./textSelection";

@@ -1,5 +1,10 @@
 /*
+ * Copyright 2022 Solid Aria Working Group.
+ * MIT License
+ *
+ * Portions of this file are based on code from react-spectrum.
  * Copyright 2020 Adobe. All rights reserved.
+ *
  * This file is licensed to you under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License. You may obtain a copy
  * of the License at http://www.apache.org/licenses/LICENSE-2.0
@@ -10,34 +15,31 @@
  * governing permissions and limitations under the License.
  */
 
-import {useLayoutEffect} from '@solid-aria/utils';
+import { createSignal, onCleanup } from "solid-js";
 
+// Keyboards, Assistive Technologies, and element.click() all produce a "virtual"
+// click event. This is a method of inferring such clicks. Every browser except
+// IE 11 only sets a zero value of "detail" for click events that are "virtual".
+// However, IE 11 uses a zero value for all click events. For IE 11 we rely on
+// the quirk that it produces click events that are of type PointerEvent, and
+// where only the "virtual" click lacks a pointerType field.
+export function isVirtualClick(event: MouseEvent | PointerEvent): boolean {
+  // JAWS/NVDA with Firefox.
+  if ((event as any).mozInputSource === 0 && event.isTrusted) {
+    return true;
+  }
 
-export function useSyntheticBlurEvent<Target = Element>(onBlur: (e: FocusEvent) => void) {
-  let stateRef = {current:{
-    isFocused: false,
-    onBlur,
-    observer: null as unknown as  MutationObserver
-  }};
-  stateRef.current.onBlur = onBlur;
+  return event.detail === 0 && !(event as PointerEvent).pointerType;
+}
 
-  // Clean up MutationObserver on unmount. See below.
-  // eslint-disable-next-line arrow-body-style
-  useLayoutEffect(() => {
-    const state = stateRef.current;
-    return () => {
-      if (state.observer) {
-        state.observer.disconnect();
-        state.observer = null as any;
-      }
-    };
-  }, []);
+export function createSyntheticBlurEvent(onBlur: (event: FocusEvent) => void) {
+  const [isFocused, setIsFocused] = createSignal(false);
+  const [observer, setObserver] = createSignal<MutationObserver | null>(null);
 
-  // This function is called during a React onFocus event.
-  return (e: FocusEvent) => {
-    // React does not fire onBlur when an element is disabled. https://github.com/facebook/react/issues/9142
-    // Most browsers fire a native focusout event in this case, except for Firefox. In that case, we use a
-    // MutationObserver to watch for the disabled attribute, and dispatch these events ourselves.
+  // This function is called during a SolidJS onFocus event.
+  const onFocus = (e: FocusEvent) => {
+    // Most browsers fire a native focusout event when an element is disabled, except for Firefox.
+    // In that case, we use a MutationObserver to watch for the disabled attribute, and dispatch these events ourselves.
     // For browsers that do, focusout fires before the MutationObserver, so onBlur should not fire twice.
     if (
       e.target instanceof HTMLButtonElement ||
@@ -45,35 +47,44 @@ export function useSyntheticBlurEvent<Target = Element>(onBlur: (e: FocusEvent) 
       e.target instanceof HTMLTextAreaElement ||
       e.target instanceof HTMLSelectElement
     ) {
-      stateRef.current.isFocused = true;
+      setIsFocused(true);
 
-      let target = e.target;
-      let onBlurHandler = (e: FocusEvent) => {
-        stateRef.current.isFocused = false;
+      const target = e.target;
+
+      const onBlurHandler = (e: FocusEvent) => {
+        setIsFocused(false);
 
         if (target.disabled) {
-          // For backward compatibility, dispatch a (fake) React synthetic event.
-          stateRef.current.onBlur?.(e);
+          // For backward compatibility, dispatch a (fake) event.
+          onBlur(new FocusEvent("blur", e));
         }
 
         // We no longer need the MutationObserver once the target is blurred.
-        if (stateRef.current.observer) {
-          stateRef.current.observer.disconnect();
-          stateRef.current.observer = null as any;
+        observer()?.disconnect();
+        setObserver(null);
+      };
+
+      target.addEventListener("focusout", onBlurHandler as EventListener, { once: true });
+
+      const mutationCallback = () => {
+        if (isFocused() && target.disabled) {
+          observer()?.disconnect();
+          target.dispatchEvent(new FocusEvent("blur"));
+          target.dispatchEvent(new FocusEvent("focusout", { bubbles: true }));
         }
       };
 
-      target.addEventListener('focusout', onBlurHandler as any, {once: true});
+      setObserver(new MutationObserver(mutationCallback));
 
-      stateRef.current.observer = new MutationObserver(() => {
-        if (stateRef.current.isFocused && target.disabled) {
-          stateRef.current.observer.disconnect();
-          target.dispatchEvent(new FocusEvent('blur'));
-          target.dispatchEvent(new FocusEvent('focusout', {bubbles: true}));
-        }
-      });
-
-      stateRef.current.observer.observe(target, {attributes: true, attributeFilter: ['disabled']});
+      observer()?.observe(target, { attributes: true, attributeFilter: ["disabled"] });
     }
   };
+
+  // Clean up MutationObserver on unmount.
+  onCleanup(() => {
+    observer()?.disconnect();
+    setObserver(null);
+  });
+
+  return onFocus;
 }

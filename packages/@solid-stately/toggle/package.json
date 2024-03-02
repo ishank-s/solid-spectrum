@@ -25,9 +25,10 @@
   ],
   "sideEffects": false,
   "dependencies": {
-    "@react-types/checkbox": "^3.4.3",
-    "@react-types/shared": "^3.18.0",
-    "@solid-stately/utils": "workspace:^"
+    "@react-types/checkbox": "^3.7.1",
+    "@react-types/shared": "^3.22.1",
+    "@solid-stately/utils": "workspace:^",
+    "solid-js": "^1.8.15"
   },
   "peerDependencies": {
     "solid-js": "^1.7.5"
