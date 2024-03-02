@@ -1,47 +1,53 @@
 import { createSignal, type Component, createEffect } from 'solid-js'
-import { useToggle } from '@solid-spectrum/solid-aria'
 import { debugSignal } from '@solid-devtools/logger'
+import { AriaToggleButtonProps, createToggleButton } from '@solid-aria/button'
+import 'solid-devtools'
 
-const ToggleButton:Component<{initial:boolean}> = (props)=>{
-  const [isSelected, setSelected] = createSignal<boolean>(props.initial)
-  let inputRef
-  const state = useToggle(
-    {},
-    { isSelected, setSelected, toggle: () => setSelected(v => !v) },
-    inputRef as any,
-  )
-  createEffect(() => {
-    console.log('Prop value changed:', props.initial);
-    setSelected(props.initial)
-  });
-  return <button
-  style={{
-    backgroundColor: state.isPressed()
-      ? state.isSelected()
-        ? 'darkgreen'
-        : 'gray'
-      : state.isSelected()
-      ? 'green'
-      : 'lightgray',
-    color: state.isSelected() ? 'white' : 'black',
-    padding: '10',
-    border: 'none',
-  } as any}
-  ref={inputRef}
-  onClick={()=>setSelected((v)=>!v)}
->
-  Pin
-</button>
-}
-const App: Component = () => {
-     const [val,setVal] = createSignal(false);
-  debugSignal(val)
+const ToggleButton = (props: AriaToggleButtonProps) => {
+  let ref: HTMLButtonElement | undefined
+
+  const { buttonProps, isPressed, state } = createToggleButton(props, () => ref)
   return (
-    <div>
-      <ToggleButton initial={val()}/>
-      <button onClick={()=>setVal(v=>!v)}>test b</button>
-    </div>
+    <>
+      <button
+        {...buttonProps}
+        style={{
+          'background-color': isPressed()
+            ? state.isSelected()
+              ? 'darkblue'
+              : 'darkgreen'
+            : state.isSelected()
+            ? 'blue'
+            : 'green',
+          color: 'white',
+          padding: '10px',
+          cursor: 'pointer',
+          'user-select': 'none',
+          '-webkit-user-select': 'none',
+          border: 'none',
+        }}
+        ref={ref}
+      >
+        {isPressed()
+          ? state.isSelected()
+            ? 'darkblue'
+            : 'darkgreen'
+          : state.isSelected()
+          ? 'blue'
+          : 'green'}
+        {props.children}
+      </button>
+      <button
+      
+      >
+        {props.children}
+      </button>
+    </>
   )
+}
+
+function App() {
+  return <ToggleButton>Test</ToggleButton>
 }
 
 export default App

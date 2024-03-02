@@ -1,6 +1,6 @@
 import type { StorybookConfig } from 'storybook-solidjs-vite'
 const config: StorybookConfig = {
-  stories:['../packages/@solid-aria/toggle/stories/*.stories.{js,jsx,ts,tsx}'],
+  stories:['../packages/@solid-aria/**/stories/*.stories.{js,jsx,ts,tsx}'],
   addons: [
     '@storybook/addon-links',
     '@storybook/addon-essentials',
